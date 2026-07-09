@@ -112,17 +112,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   subtitle: "Manage your account",
                 ),
 
-                buildCard(
-                  icon: Icons.settings,
-                  title: "Settings",
-                  subtitle: "Customize your application",
-                ),
-
-                buildCard(
-                  icon: Icons.logout,
-                  title: "Logout",
-                  subtitle: "Sign out from your account",
-                ),
                 const SizedBox(height: 30),
                 SizedBox(
                   width: double.infinity,
