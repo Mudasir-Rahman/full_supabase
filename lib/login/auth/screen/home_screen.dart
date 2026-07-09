@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:supabase_from_zero_to_end/login/auth/screen/signup_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -25,6 +26,21 @@ class _HomeScreenState extends State<HomeScreen> {
         subtitle: Text(subtitle),
         trailing: const Icon(Icons.arrow_forward_ios, size: 18),
       ),
+    );
+  }
+
+  ElevatedButton buildButton({
+    required String text,
+    required VoidCallback onPressed,
+  }) {
+    return ElevatedButton(
+      onPressed: onPressed,
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.blue,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+      ),
+      child: Text(text, style: const TextStyle(fontSize: 16)),
     );
   }
 
@@ -106,6 +122,19 @@ class _HomeScreenState extends State<HomeScreen> {
                   icon: Icons.logout,
                   title: "Logout",
                   subtitle: "Sign out from your account",
+                ),
+                const SizedBox(height: 30),
+                SizedBox(
+                  width: double.infinity,
+                  child: buildButton(
+                    text: "Go to Sign Up",
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const SignUp()),
+                      );
+                    },
+                  ),
                 ),
               ],
             ),

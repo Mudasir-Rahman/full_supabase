@@ -138,6 +138,7 @@
 // }
 import 'package:flutter/material.dart';
 import 'package:supabase_from_zero_to_end/login/auth/backend/auth_backend.dart';
+import 'package:supabase_from_zero_to_end/login/auth/screen/login_screen.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -327,7 +328,14 @@ class _SignUpState extends State<SignUp> {
                               style: TextStyle(color: Colors.grey.shade600),
                             ),
                             TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const LoginScreen(),
+                                  ),
+                                );
+                              },
                               child: const Text("Login"),
                             ),
                           ],

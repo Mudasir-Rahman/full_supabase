@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class RegisterUser extends StatefulWidget {
-  const RegisterUser({super.key});
+class VerifyEmailScreen extends StatefulWidget {
+  const VerifyEmailScreen({super.key});
 
   @override
-  State<RegisterUser> createState() => _RegisterUserState();
+  State<VerifyEmailScreen> createState() => _VerifyEmailScreenState();
 }
 
-class _RegisterUserState extends State<RegisterUser> {
+class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: Center(child: Text('Register User')));
+    return Scaffold(body: Center(child: Text('Verify Email')));
   }
 }
