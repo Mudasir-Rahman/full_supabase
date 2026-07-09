@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:supabase_from_zero_to_end/login/auth/screen/signup_screen.dart';
+import 'package:supabase_from_zero_to_end/login/auth/screen/login_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -127,11 +127,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(
                   width: double.infinity,
                   child: buildButton(
-                    text: "Go to Sign Up",
+                    text: "Log Out",
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const SignUp()),
+                        MaterialPageRoute(
+                          builder: (context) => const LoginScreen(),
+                        ),
                       );
                     },
                   ),

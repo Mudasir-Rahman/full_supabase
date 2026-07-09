@@ -153,14 +153,13 @@ class _SignUpState extends State<SignUp> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
-  final nameController = TextEditingController();
 
   @override
   void dispose() {
     emailController.dispose();
     passwordController.dispose();
     confirmPasswordController.dispose();
-    nameController.dispose();
+
     super.dispose();
   }
 
@@ -245,16 +244,6 @@ class _SignUpState extends State<SignUp> {
                         ),
 
                         const SizedBox(height: 30),
-
-                        TextFormField(
-                          controller: nameController,
-                          decoration: buildInputDecoration(
-                            label: "Full Name",
-                            icon: Icons.person,
-                          ),
-                        ),
-
-                        const SizedBox(height: 18),
 
                         TextFormField(
                           controller: emailController,
