@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:supabase_from_zero_to_end/login/auth/backend/register_user.dart';
 import 'package:supabase_from_zero_to_end/login/auth/screen/home_screen.dart';
 import 'package:supabase_from_zero_to_end/login/auth/screen/signup_screen.dart';
 
@@ -18,24 +19,29 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future<void> _checkUserSession() async {
-    // Optional: Show splash screen for 2 seconds
     await Future.delayed(const Duration(seconds: 2));
 
     if (!mounted) return;
 
-    final session = Supabase.instance.client.auth.currentSession;
+    final user = Supabase.instance.client.auth.currentUser;
 
-    if (session != null) {
-      // User is already logged in
+    if (user == null) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => const SignUp()),
+      );
+      return;
+    }
+
+    if (user.emailConfirmedAt != null) {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (_) => const HomeScreen()),
       );
     } else {
-      // User is not logged in
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (_) => const SignUp()),
+        MaterialPageRoute(builder: (_) => const RegisterUser()),
       );
     }
   }
