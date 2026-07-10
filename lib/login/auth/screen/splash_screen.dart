@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:supabase_from_zero_to_end/login/auth/screen/register/register_user.dart';
 import 'package:supabase_from_zero_to_end/login/auth/screen/verify_email_screen.dart';
 import 'package:supabase_from_zero_to_end/login/auth/screen/home_screen.dart';
 import 'package:supabase_from_zero_to_end/login/auth/screen/signup_screen.dart';
@@ -36,7 +37,7 @@ class _SplashScreenState extends State<SplashScreen> {
     if (user.emailConfirmedAt != null) {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (_) => const HomeScreen()),
+        MaterialPageRoute(builder: (_) => const RegisterUser()),
       );
     } else {
       Navigator.pushReplacement(
