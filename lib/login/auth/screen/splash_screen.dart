@@ -94,42 +94,39 @@ class _SplashScreenState extends State<SplashScreen> {
 
     if (!mounted) return;
 
-    final user = Supabase.instance.client.auth.currentUser;
+    try {
+      final user = Supabase.instance.client.auth.currentUser;
 
-    // User not logged in
-    if (user == null) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (_) => const SignUp()),
+      if (user == null) {
+        _goTo(const SignUp());
+        return;
+      }
+
+      if (user.emailConfirmedAt == null) {
+        _goTo(const VerifyEmailScreen());
+        return;
+      }
+
+      final exists = await profileBackend.profileExists().timeout(
+        const Duration(seconds: 8),
       );
-      return;
+
+      if (!mounted) return;
+
+      _goTo(exists ? const HomeScreen() : const RegisterUserScreen());
+    } catch (error) {
+      if (!mounted) return;
+      _goTo(const RegisterUserScreen());
     }
+  }
 
-    // Email not verified
-    if (user.emailConfirmedAt == null) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (_) => const VerifyEmailScreen()),
-      );
-      return;
-    }
-
-    // Check if profile exists
-    final exists = await profileBackend.profileExists();
-
+  void _goTo(Widget screen) {
     if (!mounted) return;
 
-    if (exists) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (_) => const HomeScreen()),
-      );
-    } else {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (_) => const RegisterUserScreen()),
-      );
-    }
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (_) => screen),
+    );
   }
 
   @override
