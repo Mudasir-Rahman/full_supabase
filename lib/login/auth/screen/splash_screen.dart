@@ -37,7 +37,7 @@ class _SplashScreenState extends State<SplashScreen> {
     if (user.emailConfirmedAt != null) {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (_) => const RegisterUser()),
+        MaterialPageRoute(builder: (_) => const RegisterUserScreen()),
       );
     } else {
       Navigator.pushReplacement(
